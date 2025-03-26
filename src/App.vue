@@ -1,28 +1,3 @@
-<template>
-  <div id="app">
-   <nav class="navbar navbar-expand-lg p-3">
-    <div class="container d-flex justify-content-between align-items-center">
-      <!-- Left Side: Brand + Nav Links -->
-      <div class="d-flex align-items-center gap-5">
-      <a href="https://www.artez.store/" class="nav-link">SHOP</a>
-      <router-link class="nav-link" to="/about">ABOUT</router-link>
-      <a href="#" class="nav-link">FUTURES</a>
-    </div>
-
-    <router-link class="nav-link" to="/">BWS</router-link>
-    
-    <!-- Right Side: Additional Nav Links -->
-    <div class="d-flex align-items-center gap-5">
-      <a href="#" class="nav-link">SEARCH</a>
-      <router-link class="nav-link" to="/contact">CONTACT</router-link>
-      <router-link class="nav-link" :to="accountLink">ACCOUNT</router-link>
-    </div>
-  </div>
-</nav>
-    <router-view />
-  </div>
-</template>
-
 <script>
 import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
 import app from "@/firebase";
@@ -65,6 +40,31 @@ export default {
 };
 </script>
 
+<template>
+  <div id="app">
+   <nav class="navbar navbar-expand-lg p-3">
+    <div class="container d-flex justify-content-between align-items-center">
+      <!-- Left Side: Brand + Nav Links -->
+      <div class="d-flex align-items-center gap-5">
+      <a href="https://www.artez.store/" class="nav-link">SHOP</a>
+      <router-link class="nav-link" to="/about">ABOUT</router-link>
+      <router-link class="nav-link" to="/projects">PROJECTS</router-link>
+    </div>
+
+    <router-link class="logo nav-link" to="/">BWS</router-link>
+    
+    <!-- Right Side: Additional Nav Links -->
+    <div class="d-flex align-items-center gap-5">
+      <a href="#" class="nav-link">SEARCH</a>
+      <router-link class="nav-link" to="/contact">CONTACT</router-link>
+      <router-link class="nav-link" :to="accountLink">ACCOUNT</router-link>
+    </div>
+  </div>
+</nav>
+    <router-view />
+  </div>
+</template>
+
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -74,22 +74,19 @@ export default {
 .navbar{
   background-color: var(--background);
   color: #c4c4c4;
-}
-
-nav a {
+  font-size: 1rem;
   font-family: var(--font-1);
-  font-size: 4rem;
-}
-
-nav a.router-link-exact-active {
-  color: #f500c0;
-}
-
-nav button {
-  background: none;
-  border: none;
-  color: #2c3e50;
-  cursor: pointer;
   font-weight: bold;
+}
+
+.logo{
+  font-size: 1.9rem !important;
+}
+
+.nav-link:hover {
+  color: #d90101 !important;
+}
+nav a.router-link-exact-active {
+  color: #8e0101;
 }
 </style>

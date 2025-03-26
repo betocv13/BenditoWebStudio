@@ -1,15 +1,13 @@
 <script>
-import {
+import { 
   getAuth,
-  signInWithEmailAndPassword,
-  signInAnonymously,
-  signInWithPopup,
-  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import app from "@/firebase";
 
 export default {
-  name: "LoginPage",
+  name: "SignUpPage",
   data() {
     return {
       email: "",
@@ -20,44 +18,25 @@ export default {
     };
   },
   methods: {
-    async loginWithEmail() {
-      this.error = null;
-      try {
-        const auth = getAuth(app);
-        const userCredential = await signInWithEmailAndPassword(auth, this.email, this.password);
-        const user = userCredential.user;
-        const isAdmin = user.email === "betito.castillo.98@icloud.com";
-        this.$router.push(isAdmin ? "/admin" : "/account");
-      } catch (err) {
-        this.error = err.message;
-      }
-    },
-    async loginWithGoogle() {
-      this.error = null;
-      try {
-        const auth = getAuth(app);
-        const provider = new GoogleAuthProvider();
-        const userCredential = await signInWithPopup(auth, provider);
-        const user = userCredential.user;
-        console.log("Logged in as:", user); 
-        const isAdmin = user.email === "betito.castillo.98@icloud.com";
-        this.$router.push(isAdmin ? "/admin" : "/account");
-      } catch (err) {
-        this.error = err.message;
-      }
-    },
-    async continueAsGuest() {
-      this.error = null;
-      try {
-        const auth = getAuth(app);
-        const userCredential = await signInAnonymously(auth);
-        const user = userCredential.user;
-        const isAdmin = user.email === "betito.castillo.98@icloud.com"; // user.email will likely be null as guest
-        this.$router.push(isAdmin ? "/admin" : "/account");
-      } catch (err) {
-        this.error = err.message;
-      }
-    },
+    async register() {
+  this.error = null;
+  try {
+    const auth = getAuth(app);
+    // Create the new user
+    const userCredential = await createUserWithEmailAndPassword(auth, this.email, this.password);
+    const user = userCredential.user;
+    
+    // Optionally update the user's profile with a display name
+    await updateProfile(user, {
+      displayName: `${this.firstName} ${this.lastName}`
+    });
+    
+    // Redirect user
+    this.$router.push("/account");
+  } catch (err) {
+    this.error = err.message;
+  }
+  }
   },
 };
 </script>
@@ -76,8 +55,8 @@ export default {
         <!-- Right Column: Login Form -->
         <div class="right col-md-6 d-flex align-items-center justify-content-center">
           <div class="card p-4 w-75">
-            <h1 class="card-title text-center mb-4 fw-bold text-white">Login</h1>
-            
+            <h1 class="card-title text-center mb-4 fw-bold text-white">Create Account</h1>
+
             <!-- Email Input -->
             <div class="mb-3">
               <input
@@ -102,21 +81,22 @@ export default {
             
             <!-- Login with Email Button -->
             <div class="d-grid gap-2 mb-0">
-             <button @click="loginWithEmail" class="btn btn-outline-light rounded-pill w-50 mx-auto">
-              Sign In
+             <button @click="register" class="btn btn-outline-light rounded-pill w-50 mx-auto">
+              Register
              </button>
             </div>
             
             <hr>
             
-             <!-- Forgot Password / Sign Up Links -->
-          <div class="text-center mt-2">
-            <a href="#" class="text-white text-decoration-underline">Forgot your password?</a>
+            <div class="text-center mt-2">
+            <a href="#" class="text-white text-decoration-underline" @click.prevent="loginWithGoogle">
+                Sign In With Google
+            </a>
             <br />
             <p class="text-white mt-2">
-              Don’t have an account?
-              <router-link to="/signup" class="text-white text-decoration-underline">
-                Sign up!
+              Already have an account?
+              <router-link to="/account" class="text-white text-decoration-underline">
+                Sign in!
               </router-link>
             </p>
           </div>

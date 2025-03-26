@@ -24,6 +24,12 @@ const routes = [
       import(/* webpackChunkName: "contact" */ "../views/ContactView.vue"),
   },
   {
+    path: "/signup",
+    name: "signup",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/SignUpView.vue"),
+  },
+  {
     path: "/login",
     name: "login",
     component: Login,
@@ -44,6 +50,12 @@ const routes = [
     meta: {
       requiresAuth: true,
     },
+  },
+  {
+    path: "/projects",
+    name: "projects",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/ProjectView.vue"),
   },
 ];
 
