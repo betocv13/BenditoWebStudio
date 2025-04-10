@@ -6,6 +6,7 @@
 :root {
     --opacity: rgba(211, 207, 207, 0.346); /* Adjust the alpha for desired transparency */
     --white: white;
+    --artez-gray: #c4c4c4;
     --basic: #005eff;
     --plus: #e90bb9;
     --pro: #06820a;

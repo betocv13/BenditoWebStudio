@@ -79,7 +79,7 @@ if (isDesktop()) {
     <div class="row justify-content-center g-4">
       <!-- First Box -->
       <div class="col-12 col-md-6 d-flex justify-content-center">
-        <a href="https://allstarpainting.webflow.io/" target="_blank" class="custom-link text-decoration-none w-100">
+        <a href="https://www.allstarpaint.net/" target="_blank" class="custom-link text-decoration-none w-100">
           <div class="box position-relative" :style="{
             backgroundImage: 'url(' + allstarImage + ')',
             backgroundSize: 'cover',

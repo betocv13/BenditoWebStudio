@@ -13,7 +13,7 @@ export default {
           </div>
   
           <!-- Contact Form -->
-          <div class="col-12 col-md-6 contact-form" v-fade-in>
+          <div class="col-12 col-md-6 contact-form text-start" v-fade-in>
             <h1 class="contact-header mb-4">Contact</h1>
             <form action="https://formspree.io/f/mqaeavrv" method="POST">
               <div class="mb-3">
@@ -95,10 +95,10 @@ export default {
   .stay-in-touch {
     font-size: 2.5rem;
     text-align: center;
-    font-family: 'CustomFont4', sans-serif;
+    font-family: var(--font-1);
   }
   .contact-header{
-    font-family: 'CustomFont4', sans-serif;
+    font-family: var(--font-1);
   }
   
   /* Contact Form */

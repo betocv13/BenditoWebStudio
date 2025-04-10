@@ -91,7 +91,10 @@ export default {
 .section-header {
   font-size: 2.5rem;
   font-weight: bold;
-  font-family: 'CustomFont4', sans-serif;
+  font-family: var(--font-1);
+  background: linear-gradient(19deg, #ffffff 23%, #595858 32%, #ffffff 51%, #878787 67%, #ffffff 83%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 /* State when the element is visible */
 .fade-in.visible {

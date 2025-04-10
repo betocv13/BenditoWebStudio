@@ -1,13 +1,13 @@
 <script>
 import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
 import app from "@/firebase";
-import ContactView from "./ContactView.vue";
 import ServicesView from "./ServicesView.vue";
+import BannerView from "./BannerView.vue";
 
 export default {
   components: {
-    ContactView,
     ServicesView,
+    BannerView,
   },
   name: "HomeView",
   data() {
@@ -54,7 +54,7 @@ export default {
           </div>
         </section>
         <ServicesView/>
-        <ContactView/>
+        <BannerView class="pb-4"/>
 </template>
 
 <style scoped>
@@ -66,6 +66,7 @@ export default {
   font-size: 2.5rem;
   font-weight: bold;
   letter-spacing: 1px;
+  font-family: var(--font-1);
 }
 
 .banner {
@@ -75,7 +76,16 @@ export default {
 
 .banner-img {
   object-fit: cover;
-  filter: brightness(40%);
+  filter: brightness(60%);
   animation: growIn 1.5s ease-in-out forwards;
+}
+@media (max-width: 768px) {
+  .custom-header {
+  font-size: 1.5rem;
+}
+.banner {
+  height: 75vh;
+}
+
 }
 </style>
