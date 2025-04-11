@@ -63,9 +63,9 @@ export default {
 </script>
 
 <template>
-    <div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center px-3 px-md-5">
-      <div class="row w-100 rounded-2 overflow-hidden">
-        <div class="col-md-6 d-none d-md-block p-0">
+    <div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center px-0 px-lg-5">
+      <div class="row w-100 radius-md overflow-hidden">
+        <div class="col-md-6 d-none d-lg-block p-0">
             <img
              :src="leftImageUrl"
              alt="Side Image"
@@ -75,8 +75,8 @@ export default {
         </div>
         <!-- Right Column: Login Form -->
         <div class="right col-md-6 d-flex align-items-center justify-content-center">
-          <div class="card p-4 w-75">
-            <h1 class="card-title text-center mb-4 fw-bold text-white">Login</h1>
+          <div class="card p-0 p-md-4 w-75">
+            <h1 class="card-title text-center mb-5 mb-md-4 fw-bold text-white">Login</h1>
             
             <!-- Email Input -->
             <div class="mb-3">
@@ -101,8 +101,8 @@ export default {
             </div>
             
             <!-- Login with Email Button -->
-            <div class="d-grid gap-2 mb-0">
-             <button @click="loginWithEmail" class="btn btn-outline-light rounded-pill w-50 mx-auto">
+            <div class="d-grid gap-2 mt-4 mt-md-0">
+             <button @click="loginWithEmail" class="btn btn-outline-light rounded-pill w-75 mx-auto">
               Sign In
              </button>
             </div>
@@ -110,7 +110,7 @@ export default {
             <hr>
             
              <!-- Forgot Password / Sign Up Links -->
-          <div class="text-center mt-2">
+          <div class="text-center mt-5 mt-lg-2">
             <a href="#" class="text-white text-decoration-underline">Forgot your password?</a>
             <br />
             <p class="text-white mt-2">
@@ -138,8 +138,26 @@ background-color: var(--background) !important;
 }
 .card-title{
     font-family: var(--font-1);
+    font-size: 3.5rem;
 }
 .form-control{
     font-family: var(--font-1);
+}
+.radiues-md {
+  border-radius: 10px;
+}
+
+@media (max-width: 992.98px) {
+  .radius-md {
+    border-radius: 0; 
+  }
+
+  .right {
+    width: 100vw !important;
+    height: 100vh !important;
+  }
+  .card{
+    margin-bottom: 50px;
+  }
 }
 </style>
